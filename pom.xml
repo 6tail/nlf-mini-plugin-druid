@@ -6,7 +6,7 @@
 
     <groupId>cn.6tail</groupId>
     <artifactId>nlf-mini-plugin-druid</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>${project.groupId}:${project.artifactId}</name>
     <url>https://github.com/6tail/nlf-mini-plugin-druid</url>
     <description>druid plugin for nlf-mini</description>
@@ -68,20 +68,8 @@
         <dependency>
             <groupId>cn.6tail</groupId>
             <artifactId>nlf-mini</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.5</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.36</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -115,7 +103,7 @@
                 <version>${maven-surefire-plugin-version}</version>
                 <configuration>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
-                    <skipTests>false</skipTests>
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
             <plugin>

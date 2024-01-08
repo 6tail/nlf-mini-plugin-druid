@@ -23,6 +23,21 @@ public class DruidSetting extends AbstractDbSetting{
   private boolean testOnBorrow = false;
   private boolean testOnReturn = false;
   private boolean poolPreparedStatements = false;
+
+  /**
+   * 如果连接泄露，是否需要回收泄露的连接，默认false
+   */
+  private boolean removeAbandoned = false;
+
+  /**
+   * 如果回收了泄露的连接，是否要打印一条log，默认false
+   */
+  private boolean logAbandoned = false;
+
+  /**
+   * 连接回收的超时毫秒数，默认5分钟
+   */
+  private long removeAbandonedTimeoutMillis = -1;
   private String filters;
 
   public DruidSetting(){
@@ -77,6 +92,14 @@ public class DruidSetting extends AbstractDbSetting{
     this.minEvictableIdleTimeMillis = minEvictableIdleTimeMillis;
   }
 
+  public long getRemoveAbandonedTimeoutMillis() {
+    return removeAbandonedTimeoutMillis;
+  }
+
+  public void setRemoveAbandonedTimeoutMillis(long removeAbandonedTimeoutMillis) {
+    this.removeAbandonedTimeoutMillis = removeAbandonedTimeoutMillis;
+  }
+
   public int getMaxPoolPreparedStatementPerConnectionSize(){
     return maxPoolPreparedStatementPerConnectionSize;
   }
@@ -115,6 +138,22 @@ public class DruidSetting extends AbstractDbSetting{
 
   public void setPoolPreparedStatements(boolean poolPreparedStatements){
     this.poolPreparedStatements = poolPreparedStatements;
+  }
+
+  public boolean isRemoveAbandoned() {
+    return removeAbandoned;
+  }
+
+  public void setRemoveAbandoned(boolean removeAbandoned) {
+    this.removeAbandoned = removeAbandoned;
+  }
+
+  public boolean isLogAbandoned() {
+    return logAbandoned;
+  }
+
+  public void setLogAbandoned(boolean logAbandoned) {
+    this.logAbandoned = logAbandoned;
   }
 
   public String getFilters(){

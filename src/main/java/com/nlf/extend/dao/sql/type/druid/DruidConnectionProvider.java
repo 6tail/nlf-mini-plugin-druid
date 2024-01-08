@@ -57,6 +57,11 @@ public class DruidConnectionProvider extends AbstractConnectionProvider{
         if(-1!=setting.getMaxPoolPreparedStatementPerConnectionSize()){
           dataSource.setMaxPoolPreparedStatementPerConnectionSize(setting.getMaxPoolPreparedStatementPerConnectionSize());
         }
+        dataSource.setRemoveAbandoned(setting.isRemoveAbandoned());
+        dataSource.setLogAbandoned(setting.isLogAbandoned());
+        if (-1 != setting.getRemoveAbandonedTimeoutMillis()) {
+          dataSource.setRemoveAbandonedTimeoutMillis(setting.getRemoveAbandonedTimeoutMillis());
+        }
         dataSource.setValidationQuery(App.getProperty("nlf.dao.setting."+setting.getDbType()+".sql"));
         if(null!=setting.getFilters()){
           dataSource.setFilters(setting.getFilters());

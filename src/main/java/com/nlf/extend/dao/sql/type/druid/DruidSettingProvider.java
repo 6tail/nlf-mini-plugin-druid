@@ -49,6 +49,16 @@ public class DruidSettingProvider implements IDbSettingProvider {
     ds.setTestOnBorrow(o.getBoolean("testOnBorrow", false));
     ds.setTestOnReturn(o.getBoolean("testOnReturn", false));
     ds.setPoolPreparedStatements(o.getBoolean("poolPreparedStatements", false));
+    ds.setRemoveAbandoned(o.getBoolean("removeAbandoned", false));
+    ds.setLogAbandoned(o.getBoolean("logAbandoned", false));
+    int removeAbandonedTimeout = o.getInt("removeAbandonedTimeout", -1);
+    if (-1 != removeAbandonedTimeout) {
+      ds.setRemoveAbandonedTimeoutMillis(removeAbandonedTimeout * 1000L);
+    }
+    long removeAbandonedTimeoutMillis = o.getLong("removeAbandonedTimeoutMillis", -1);
+    if (-1 != removeAbandonedTimeoutMillis) {
+      ds.setRemoveAbandonedTimeoutMillis(removeAbandonedTimeoutMillis);
+    }
     ds.setFilters(o.getString("filters"));
     if (driver.length() > 0) {
       ds.setDriver(driver);
